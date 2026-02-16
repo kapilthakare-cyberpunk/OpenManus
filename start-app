@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# OpenManus Application Starter Script
+# This script provides a convenient way to start the OpenManus application
+
+# Change to the project directory
+cd "$(dirname "$0")"
+
+# Run the application using the virtual environment Python
+echo "Starting OpenManus application..."
+echo "Using local Ollama models for inference..."
+echo ""
+
+# Check if a command-line argument was provided as a prompt
+if [ $# -eq 0 ]; then
+    # No arguments provided, run without a prompt (will prompt for input)
+    exec /home/kapilt/Projects/OpenManus/.venv/bin/python main.py
+else
+    # Arguments provided, pass them as command-line arguments
+    exec /home/kapilt/Projects/OpenManus/.venv/bin/python main.py --prompt "$*"
+fi
